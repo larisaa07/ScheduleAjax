@@ -4,24 +4,54 @@ $( document ).ready(function() {
     let btn = $('#submitDay');
     btn.on('click', function(){
 
-        let selectedDay = $('#dayInput').text();
-        if (selectedDay != ["A", "B", "C", "D", "E", "F", "G"]){
-            //add an error message
-        }
+        let selectedDay = $('#dayInput').val().toUpperCase();
+        if (["A", "B", "C", "D", "E", "F", "G"].includes(selectedDay)){
 
-    btn.on('click', function() {
-        $.ajax({
-            type: 'GET',
-            url: 'https://api.npoint.io/981011375e51b80de040',
-            dataType: 'json',
-            success: function (data) {
-                let 
-            },
-            error: function () {
-                console.log('Connection Error')
-            }
-        });
+            $.ajax({
+                type: 'GET',
+                url: 'https://api.npoint.io/981011375e51b80de040',
+                dataType: 'json',
+                success: function (data) {
+                    let daySchedule = data.schedule.filter(classItem => classItem.days.includes(selectedDay));
+                    console.log(daySchedule)
+
+                    renderHTML(daySchedule)
+
+                    
+                        return htmlString;
+                    
+
+                    
+
+
+
+
+
+                },
+                error: function () {
+                    alert ('Connection Error')
+                }
+            
+            })
+
+
+                function renderHTML(daySchedule){
+                    let htmlString = "";
+                    daySchedule.forEach(classItem => {
+                        htmlString += `
+                        <tr>
+                            <td>${classItem.period}</td>
+                            <td>${classItem.time}</td>
+                            <td>${classItem.class}</td>
+                            <td>${classItem.teacher}</td>
+                            <td>${classItem.room}</td>
+                        </tr>`
+                    });
+
+                    $('#scheduleList').empty().append(htmlString)
+
+
+                }
+}
     })
-    })
-    
-});
+})
