@@ -33,7 +33,8 @@ $( document ).ready(function() {
                 }
             
             })
-
+            
+            
 
                 function renderHTML(daySchedule){
                     let htmlString = "";
@@ -41,7 +42,6 @@ $( document ).ready(function() {
                         htmlString += `
                         <tr>
                             <td>${classItem.period}</td>
-                            <td>${classItem.time}</td>
                             <td>${classItem.class}</td>
                             <td>${classItem.teacher}</td>
                             <td>${classItem.room}</td>
@@ -52,6 +52,8 @@ $( document ).ready(function() {
 
 
                 }
+}else{
+    alert('Please Choose a Letter Day A-G')
 }
     })
 })

@@ -1,0 +1,12 @@
+body{
+    background-color:rgb(26, 45, 129);
+    color:rgb(179, 167, 65);
+    margin-top:40px;
+}
+
+tr{
+    border-width:3px;
+    border-color:white;
+    border-style:solid;
+    color:white;
+}
